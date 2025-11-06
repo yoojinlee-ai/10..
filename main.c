@@ -2,17 +2,17 @@
 
 void main(void) {
     FILE *fp;
-    char word[30];
-    int i;
+    int c;
 
-    fp = fopen("sample.txt", "w");  
-
-    for (i = 0; i < 3; i++) {
-        printf("input a word: ");
-        scanf("%s", word);
-        fprintf(fp, "%s\n", word); 
+    fp = fopen("sample.txt", "r");  
+    if (fp == NULL) {                
+        printf("파일을 열 수 없습니다.\n");
+        return;
     }
 
-    fclose(fp);  
+    while ((c = fgetc(fp)) != EOF)   
+        putchar(c);                  
+
+    fclose(fp);                      
 }
 
